@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "description": "",
   "main": "flatObject.js",
-  "dependencies": {},
+  "dependencies": {
+    "node-fetch": "^2.6.1"
+  },
   "devDependencies": {
     "jest": "^26.4.2"
   },

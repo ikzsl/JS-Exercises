@@ -6,13 +6,14 @@ OptionalChaining
 Пример:
 */
 
-const optionalChaining = (obj, valuesString) => {
-  const result = valuesString.split('.').reduce((acc, item) => {    
-    acc = acc ? acc[item] : acc;
-    return acc;   
-  }, { ...obj }); 
-  return result;
-};
+const optionalChaining = (obj, valuesString) =>
+  valuesString.split('.').reduce(
+    (acc, item) => {
+      acc = acc ? acc[item] : acc;
+      return acc;
+    },
+    { ...obj }
+  );
 
 // с помощью рекурсии
 
@@ -27,3 +28,18 @@ const optionalChaining = (obj, valuesString) => {
 // };
 
 module.exports = optionalChaining;
+
+function getEvenChars(str) {
+  if (100 < str.length || str.length <= 1) {
+    return 'неверная строка';
+  }
+
+  return str.split('').filter((item, idx) => {
+    if (idx % 2 === 0) {
+      return item;
+    }
+  });
+}
+
+console.log(getEvenChars('abcdefghijklm')); // ["b", "d", "f", "h", "j", "l"]
+console.log(getEvenChars('a')); // "неверная строка"
