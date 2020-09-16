@@ -38,3 +38,16 @@ console.log(flatObject(obj)); // { c: 1, d: 2, e: 3, g: 4, h: 5, i: 6, j: 7 };
 /*
 Гарантируется, что значением может быть только строка / число и что все ключи последнего уровня уникальны.
 */
+// ////////////////////////////////////
+function flatObject(o) {
+  let obj1 = {};
+  for(let prop in o) {
+      if(typeof(o[prop]) === 'object') {
+        obj1 = {...obj1, ...flatObject(o[prop])};
+      } else {
+          obj1 =  {...obj1, [prop]:o[prop]};
+      }
+  }
+  return obj1;
+}
+//////////////////////////////////////////////

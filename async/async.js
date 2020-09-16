@@ -34,13 +34,48 @@ import path from 'path';
 
 //прочитать содержимое директории и посмотреть, кто владелец каждого файла (его uid) - aсинхронно
 
-const getFileOwners = (dirpath, cb) => {
-  fs.readdir(dirpath, (_error1, filenames) => {
-    const readFileStat = (items, result = []) => {
-      if (items.length === 0) {
-       
-     }
-   }
- })
-};
-getFileOwners('./', (_error, data) => console.log(data));
+// const getFileOwners = (dirpath, cb) => {
+//   fs.readdir(dirpath, (_error1, filenames) => {
+//     const readFileStat = (items, result = []) => {
+//       if (items.length === 0) {
+
+//      }
+//    }
+//  })
+// };
+// getFileOwners('./', (_error, data) => console.log(data));
+
+// let a = 10;
+// const id = setTimeout(() => {
+//   a = 20;
+//   console.log(111, 'a=' + a, id);
+// }, 1000);
+// console.log('a=' + a);
+
+//Promise
+const { promises: fsp } = fs;
+
+// Предположим что внутри файла был текст Hexlet
+// fsp
+//   .readFile('./async/first', 'utf-8')
+//     .then(console.log)
+//     .then(() => fsp.readFile('./async/second', 'utf-8'))
+//     .then(console.log)
+//     .then(() => fsp.readFile('./async/new-file', 'utf-8'))
+//     .then(console.log)
+
+Promise.resolve(123)
+  .then((x) => {
+      console.log(x);
+      // throw Error();
+    return x + 1;
+  })
+    .catch((x) => {
+        console.log( x)
+        return x + 2
+    })
+  .then((x) => {
+    console.log(x);
+    return x + 3;
+  
+  });
