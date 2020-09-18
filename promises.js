@@ -1,19 +1,14 @@
-const fetch = require('node-fetch');
-// const promise = new Promise((resolve, reject) => {
-//     throw new Error('some error');
-//   setTimeout(() => {
-//     if (true) {
-//       resolve('promise complited');
-//     } else {
-//       reject();
-//     }
-//   }, 1000);
-// });
+import fs from 'fs';
 
-// promise.then((data) => console.log(data)).catch((error) => console.log(error));
+fs.readFile('./directory', 'utf-8', (err, data) => {
+  // Любые ошибки чтения файла: доступ, отсутствие файла, директория вместо файла
+  // null неявно приводится к false, поэтому достаточно такой проверки, 
+  // любой другой ответ трактуется как true
+  if (err) {
+    console.log('error!');
+    return; // guard expression
+  }
 
-fetch('https://jsonplaceholder.typicode.com/posts/')
-  .then((res) => res.json())
-  .then((data) => console.log(data[0].title))
-  .catch(() => console.log('some error'));
+  console.log('finished!')
+});
 

@@ -49,11 +49,14 @@ const secondPromise = (a) =>
 const thirdPromise = (b) =>
   new Promise((resolve) => setTimeout(() => resolve(b ** 2)), 100);
 
-async function promisesInSeries(promises) {
-  let a = await promises[0]();
-  let b = await  promises[1](a);
-  let c = await promises[2](b);
-  return c;
+function promisesInSeries(promises) {
+  let res = Promise.resolve();
+  console.log("res", res)
+  
+  promises.forEach((item) => {
+    res = res.then(item);
+  });
+  return res;
 }
 
 promisesInSeries([firstPromise, secondPromise, thirdPromise]).then(console.log);

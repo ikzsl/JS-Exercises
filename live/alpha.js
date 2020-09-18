@@ -9,9 +9,19 @@ function print(a) {
     }, Math.random() * 5);
   });
 }
-const letters = async (count) => {
+
+// const letters = async (count) => {
+//   for (let i = 65; i < count + 65; i += 1) {
+//     await print(String.fromCharCode(i));
+//   }
+// };
+
+const letters = (count) => {
+  let cash = Promise.resolve();
+
   for (let i = 65; i < count + 65; i += 1) {
-    await print(String.fromCharCode(i));
+    cash = cash.then(() => print(String.fromCharCode(i)));
   }
 };
-letters(17);
+
+letters(8);

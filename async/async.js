@@ -1,5 +1,6 @@
 import fs from 'fs';
 import path from 'path';
+const { promises: fsp } = fs;
 
 // чтение - запись в файл
 // const content = fs.readFile('./myfile', 'utf-8', (_error, result) => {
@@ -53,7 +54,7 @@ import path from 'path';
 // console.log('a=' + a);
 
 //Promise
-const { promises: fsp } = fs;
+
 
 // Предположим что внутри файла был текст Hexlet
 // fsp
@@ -64,18 +65,18 @@ const { promises: fsp } = fs;
 //     .then(() => fsp.readFile('./async/new-file', 'utf-8'))
 //     .then(console.log)
 
-Promise.resolve(123)
-  .then((x) => {
-      console.log(x);
-      // throw Error();
-    return x + 1;
-  })
-    .catch((x) => {
-        console.log( x)
-        return x + 2
-    })
-  .then((x) => {
-    console.log(x);
-    return x + 3;
-  
-  });
+// Promise.resolve(123)
+//   .then((x) => {
+//       console.log(x);
+//       // throw Error();
+//     return x + 1;
+//   })
+//     .catch((x) => {
+//         console.log( x)
+//         return x + 2
+//     })
+//   .then((x) => {
+//     console.log(x);
+//     return x + 3;  
+//   });
+
