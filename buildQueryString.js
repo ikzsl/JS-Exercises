@@ -12,4 +12,4 @@ let b = bqs({ param: 'all', param1: true });
 
 console.log(a);
 console.log(b);
-console.log('-------------------------------------');
+console.log('----------------+++---------------------');

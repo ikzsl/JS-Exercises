@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="link">n2</div>
+    <div class="link">n1</div>
+    <script>
+      const twoSeconds = 2000;
+      const delay = (time) => new Promise((res) => setTimeout(res, time));
+
+      const fn = async () => {
+        await delay(twoSeconds);
+        console.log(1111111);
+      };
+
+      fn();
+    </script>
+  </body>
+</html>

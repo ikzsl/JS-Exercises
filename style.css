@@ -1,13 +1,14 @@
-.container {
-    display: grid;
-    grid-template-columns: 150px 150px 150px;
-    grid-template-rows: 150px 150px;
-    
+.n2 {
+  position: relative;
+  background-color: green;
+  width: 200px;
+  height: 200px;
 }
 
-
-.item {
-    border: 1px solid red;
-    width: 100px;
-    height: 100px;
+.n1 {
+  position: relative;
+  background-color: red;
+  width: 200px;
+  height: 200px;
+  top: -20px;
 }

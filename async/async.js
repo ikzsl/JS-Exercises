@@ -1,5 +1,6 @@
 import fs from 'fs';
-import path from 'path';
+import { readFile } from 'fs/promises';
+import path, { resolve } from 'path';
 const { promises: fsp } = fs;
 
 // чтение - запись в файл
@@ -55,7 +56,6 @@ const { promises: fsp } = fs;
 
 //Promise
 
-
 // Предположим что внутри файла был текст Hexlet
 // fsp
 //   .readFile('./async/first', 'utf-8')
@@ -77,6 +77,76 @@ const { promises: fsp } = fs;
 //     })
 //   .then((x) => {
 //     console.log(x);
-//     return x + 3;  
+//     return x + 3;
 //   });
 
+// function getImage(file) {
+//   return new Promise((res, rej) => {
+//     try {
+//       const data = readFile(file, 'utf-8');
+//       res(data);
+//     } catch (err) {
+//       rej(new Error(err));
+//     }
+//   });
+// }
+
+// // getImage('./async/async.js');
+// getImage('./async/first')
+//   .then((data) => {
+//     console.log(data);
+//     return 9999;
+//   })
+//     .then(res => { console.log(res); return res + 1 })
+//     .then(res => { console.log(res); return res + 1 })
+//     .then(res => { console.log(res); return res + 1 })
+//     .then(res => { console.log(res); return res + 1 })
+//     .then(res => { console.log(res); return res + 1 })
+//     .then(res => { console.log(res); return res + 1 })
+//     .then(res => { console.log(res); return res + 1 })
+//     .then(console.log)
+//     .then(console.log)
+//     .then(console.log)
+
+// const one = () => Promise.resolve('Promise');
+
+// const a = async () => {
+//     console.log('in func');
+//     const b = await one();
+//     console.log(b);
+// };
+
+// console.log('before');
+// a();
+// console.log('after');
+
+var a = function (done) {
+  setTimeout(function () {
+    done('result a');
+  }, 300);
+};
+
+var b = function (done) {
+  setTimeout(function () {
+    done('result b');
+  }, 200);
+};
+
+function parallel(funcArray, doneAll) {
+  const res = [];
+  let counter = 0;
+
+  funcArray.forEach((item, i) => {
+    console.log(i);
+    res[i] = item(doneAll);
+    counter += 1;
+    if (counter === funcArray.length) {
+      console.log(1111);
+    }
+  });
+  return doneAll(res);
+}
+
+parallel([a, b], function (results) {
+  console.log(results); // ['result a', 'result b']
+});
